@@ -1,4 +1,7 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<map>
+
 using namespace std;
 int main(){
     unordered_map<string,int> mp;
@@ -17,8 +20,8 @@ int main(){
     else{
         cout<<item<<" is available, and its cost is "<<mp[item]<<endl;
     }
-    for(auto item:mp){
-        cout<<item.first<<" -> "<<item.second<<endl;
-    }
+    // for(auto item:mp){
+    //     cout<<item.first<<" -> "<<item.second<<endl;
+    // }
     return 0;
 }
