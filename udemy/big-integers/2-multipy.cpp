@@ -1,30 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-char digitToChar(int digit){
-    return digit + '0';
-}
-
-int charToDigit(char c){
-    return c - '0';
-}
-
-string multiply(string n1,string n2){
+void multiply(vector<int> &a,int no,int &size){
     int carry = 0;
-    string ans = "";
-    for(int i=0;i<n1.length();i++){
-        for (int j = 0; j < n2.length(); j++)
-        {
-            ans+= digitToChar((charToDigit(n1[i])*charToDigit(n2[j]))%10 + carry);
-            carry = charToDigit(n1[i])*charToDigit(n2[j])/10;
-        }
+    for(int i=0;i<size;i++){
+        int product = a[i]*no + carry;
+        a[i] = product%10;
+        carry = product/10;
     }
-    return ans;
+    while (carry)
+    {
+        a[size] = carry%10;
+        carry = carry/10;
+        size+=1;
+    }
+    
+}
+
+void bigFactorial(int n){
+    vector<int> a(1000,0);
+    a[0] = 1;
+    int size = 1;
+    for(int i=2;i<=n;i++){
+        multiply(a,i,size);
+    }
+    for(int i=size-1;i>=0;i--){
+        cout<<a[i];
+    }
+    cout<<endl;
 }
 
 int main(){
-    string s1,s2;
-    cin>>s1>>s2;
-    cout<<multiply(s1,s2);
+    int n;
+    cin>>n;
+    bigFactorial(n);
     return 0;
 }
