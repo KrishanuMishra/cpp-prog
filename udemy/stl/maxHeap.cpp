@@ -15,7 +15,6 @@ int main() {
         cout << maxHeap.top() << " "; // Output: 10 5 3
         maxHeap.pop();
     }
-    
     return 0;
 }
 
